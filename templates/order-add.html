@@ -1,166 +1,184 @@
 <!DOCTYPE html>
 <html>
-  
-  <head>
+
+<head>
     <meta charset="UTF-8">
     <title>成绩管理</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="./css/font.css">
-    <link rel="stylesheet" href="./css/xadmin.css">
-    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="./lib/layui/layui.js" charset="utf-8"></script>
-    <script type="text/javascript" src="./js/xadmin.js"></script>
+    <link rel="stylesheet" href="/static/css/font.css">
+    <link rel="stylesheet" href="/static/css/xadmin.css">
+    <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/static/js/xadmin.js"></script>
     <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
     <!--[if lt IE 9]>
       <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
       <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-  </head>
-  
-  <body>
-    <div class="x-body">
-        <form class="layui-form">
-          <div class="layui-form-item">
-              <label for="username" class="layui-form-label">
-                  <span class="x-red">*</span>姓名
-              </label>
-              <div class="layui-input-inline">
-                  <input type="text" id="username" name="username" required=""
-                  autocomplete="off" class="layui-input">
-              </div>
-          </div>
-          <div class="layui-form-item">
-              <label for="username" class="layui-form-label">
-                  <span class="x-red">*</span>语文
-              </label>
-              <div class="layui-input-inline">
-                  <input type="text" id="username" name="username" required=""
-                  autocomplete="off" class="layui-input">
-              </div>
-          </div>
-          <div class="layui-form-item">
-              <label for="phone" class="layui-form-label">
-                  <span class="x-red">*</span>数学
-              </label>
-              <div class="layui-input-inline">
-                  <input type="text" id="phone" name="phone" required=""
-                  autocomplete="off" class="layui-input">
-              </div>
-          </div>
-          <div class="layui-form-item">
-              <label for="username" class="layui-form-label">
-                  <span class="x-red">*</span>英语
-              </label>
-              <div class="layui-input-inline">
-                  <input type="text" id="username" name="username" required=""
-                  autocomplete="off" class="layui-input">
-              </div>
-          </div>
-            <div class="layui-form-item">
-              <label for="username" class="layui-form-label">
-                  <span class="x-red">*</span>物理
-              </label>
-              <div class="layui-input-inline">
-                  <input type="text" id="username" name="username" required=""
-                  autocomplete="off" class="layui-input">
-              </div>
-          </div>
-            <div class="layui-form-item">
-              <label for="username" class="layui-form-label">
-                  <span class="x-red">*</span>化学
-              </label>
-              <div class="layui-input-inline">
-                  <input type="text" id="username" name="username" required=""
-                  autocomplete="off" class="layui-input">
-              </div>
-          </div>
-          <!--<div class="layui-form-item">-->
-              <!--<label for="username" class="layui-form-label">-->
-                  <!--<span class="x-red">*</span>英语-->
-              <!--</label>-->
-              <!--<div class="layui-input-inline">-->
-                  <!--<select id="shipping" name="shipping" class="valid">-->
-                    <!--<option value="shentong">申通物流</option>-->
-                    <!--<option value="shunfeng">顺丰物流</option>-->
-                  <!--</select>-->
-              <!--</div>-->
-          <!--</div>-->
-          <!--<div class="layui-form-item">-->
-              <!--<label for="username" class="layui-form-label">-->
-                  <!--<span class="x-red">*</span>支付方式-->
-              <!--</label>-->
-              <!--<div class="layui-input-inline">-->
-                  <!--<select name="contrller">-->
-                    <!--<option>支付方式</option>-->
-                    <!--<option>支付宝</option>-->
-                    <!--<option>微信</option>-->
-                    <!--<option>货到付款</option>-->
-                  <!--</select>-->
-              <!--</div>-->
-          <!--</div>-->
-          <div class="layui-form-item">
-              <label for="L_email" class="layui-form-label">
-                  <span class="x-red">*</span>生物
-              </label>
-              <div class="layui-input-inline">
-                  <input type="text" id="L_email" name="email" required=""
-                  autocomplete="off" class="layui-input">
-              </div>
-              <div class="layui-form-mid layui-word-aux">
-                  <span class="x-red">*</span>
-              </div>
-          </div>
-          <!--<div class="layui-form-item layui-form-text">-->
-              <!--<label for="desc" class="layui-form-label">-->
-                  <!--商品增加-->
-              <!--</label>-->
-              <!--<div class="layui-input-block">-->
-                  <!--<table class="layui-table">-->
-                    <!--<tbody>-->
-                      <!--<tr>-->
-                        <!--<td>haier海尔 BC-93TMPF 93升单门冰箱</div></td>-->
-                        <!--<td>0.01</div></td>-->
-                        <!--<td>984</div></td>-->
-                        <!--<td>1</td>-->
-                        <!--<td>删除</td>-->
-                      <!--</tr>-->
-                      <!--<tr>-->
-                        <!--<td>haier海尔 BC-93TMPF 93升单门冰箱</div></td>-->
-                        <!--<td>0.01</div></td>-->
-                        <!--<td>984</div></td>-->
-                        <!--<td>1</td>-->
-                        <!--<td>删除</td>-->
-                      <!--</tr>-->
-                    <!--</tbody>-->
-                  <!--</table>-->
-              <!--</div>-->
-          <!--</div>-->
-          <!--<div class="layui-form-item layui-form-text">-->
-              <!--<label for="desc" class="layui-form-label">-->
-                  <!--描述-->
-              <!--</label>-->
-              <!--<div class="layui-input-block">-->
-                  <!--<textarea placeholder="请输入内容" id="desc" name="desc" class="layui-textarea"></textarea>-->
-              <!--</div>-->
-          <!--</div>-->
-          <div class="layui-form-item">
-              <label for="L_repass" class="layui-form-label">
-              </label>
-              <button  class="layui-btn" lay-filter="add" lay-submit="">
-                  增加
-              </button>
-          </div>
-      </form>
-    </div>
-    <script>
-        layui.use(['form','layer'], function(){
-            $ = layui.jquery;
-          var form = layui.form
-          ,layer = layui.layer;
-        
+</head>
+
+<body>
+<div class="x-body">
+    <form class="layui-form" method="post" action="{% url 'score:add' %}">{% csrf_token %}
+        <div class="layui-form-item">
+            <label for="id" class="layui-form-label">
+                <span class="x-red">*</span>学号
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" id="id" name="id" required=""
+                       autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label for="username" class="layui-form-label">
+                <span class="x-red">*</span>姓名
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" id="username" name="username" required=""
+                       autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label for="exam_type" class="layui-form-label">
+                <span class="x-red">*</span>考试类型
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" id="exam_type" name="exam_type" required=""
+                       autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="date" class="layui-form-label">
+                <span class="x-red">*</span>考试日期
+            </label>
+            <div class="layui-input-inline">
+                <input type="date" id="date" name="date" required=""
+                       autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+
+        <div class="abc">
+
+        </div>
+        {#          <div class="layui-form-item">#}
+        {#              <label for="phone" class="layui-form-label">#}
+        {#                  <span class="x-red">*</span>数学#}
+        {#              </label>#}
+        {#              <div class="layui-input-inline">#}
+        {#                  <input type="text" id="phone" name="phone" required=""#}
+        {#                  autocomplete="off" class="layui-input">#}
+        {#              </div>#}
+        {#          </div>#}
+        {#          <div class="layui-form-item">#}
+        {#              <label for="username" class="layui-form-label">#}
+        {#                  <span class="x-red">*</span>英语#}
+        {#              </label>#}
+        {#              <div class="layui-input-inline">#}
+        {#                  <input type="text" id="username" name="username" required=""#}
+        {#                  autocomplete="off" class="layui-input">#}
+        {#              </div>#}
+        {#          </div>#}
+        {#            <div class="layui-form-item">#}
+        {#              <label for="username" class="layui-form-label">#}
+        {#                  <span class="x-red">*</span>物理#}
+        {#              </label>#}
+        {#              <div class="layui-input-inline">#}
+        {#                  <input type="text" id="username" name="username" required=""#}
+        {#                  autocomplete="off" class="layui-input">#}
+        {#              </div>#}
+        {#          </div>#}
+        {#            <div class="layui-form-item">#}
+        {#              <label for="username" class="layui-form-label">#}
+        {#                  <span class="x-red">*</span>化学#}
+        {#              </label>#}
+        {#              <div class="layui-input-inline">#}
+        {#                  <input type="text" id="username" name="username" required=""#}
+        {#                  autocomplete="off" class="layui-input">#}
+        {#              </div>#}
+        {#          </div>#}
+        <!--<div class="layui-form-item">-->
+        <!--<label for="username" class="layui-form-label">-->
+        <!--<span class="x-red">*</span>英语-->
+        <!--</label>-->
+        <!--<div class="layui-input-inline">-->
+        <!--<select id="shipping" name="shipping" class="valid">-->
+        <!--<option value="shentong">申通物流</option>-->
+        <!--<option value="shunfeng">顺丰物流</option>-->
+        <!--</select>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--<div class="layui-form-item">-->
+        <!--<label for="username" class="layui-form-label">-->
+        <!--<span class="x-red">*</span>支付方式-->
+        <!--</label>-->
+        <!--<div class="layui-input-inline">-->
+        <!--<select name="contrller">-->
+        <!--<option>支付方式</option>-->
+        <!--<option>支付宝</option>-->
+        <!--<option>微信</option>-->
+        <!--<option>货到付款</option>-->
+        <!--</select>-->
+        <!--</div>-->
+        <!--</div>-->
+        {#          <div class="layui-form-item">#}
+        {#              <label for="L_email" class="layui-form-label">#}
+        {#                  <span class="x-red">*</span>生物#}
+        {#              </label>#}
+        {#              <div class="layui-input-inline">#}
+        {#                  <input type="text" id="L_email" name="email" required=""#}
+        {#                  autocomplete="off" class="layui-input">#}
+        {#              </div>#}
+        {#              <div class="layui-form-mid layui-word-aux">#}
+        {#                  <span class="x-red">*</span>#}
+        {#              </div>#}
+        {#          </div>#}
+        <!--<div class="layui-form-item layui-form-text">-->
+        <!--<label for="desc" class="layui-form-label">-->
+        <!--商品增加-->
+        <!--</label>-->
+        <!--<div class="layui-input-block">-->
+        <!--<table class="layui-table">-->
+        <!--<tbody>-->
+        <!--<tr>-->
+        <!--<td>haier海尔 BC-93TMPF 93升单门冰箱</div></td>-->
+        <!--<td>0.01</div></td>-->
+        <!--<td>984</div></td>-->
+        <!--<td>1</td>-->
+        <!--<td>删除</td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+        <!--<td>haier海尔 BC-93TMPF 93升单门冰箱</div></td>-->
+        <!--<td>0.01</div></td>-->
+        <!--<td>984</div></td>-->
+        <!--<td>1</td>-->
+        <!--<td>删除</td>-->
+        <!--</tr>-->
+        <!--</tbody>-->
+        <!--</table>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--<div class="layui-form-item layui-form-text">-->
+        <!--<label for="desc" class="layui-form-label">-->
+        <!--</label>-->
+        <!--<div class="layui-input-block">-->
+        <!--<textarea placeholder="请输入内容" id="desc" name="desc" class="layui-textarea"></textarea>-->
+        <!--</div>-->
+        <!--</div>-->
+
+    </form>
+</div>
+<script>
+    layui.use(['form','layer'], function(){
+        $ = layui.jquery;
+        var form = layui.form
+            ,layer = layui.layer;
+
 //          //自定义验证规则
 //          form.verify({
 //            nikename: function(value){
@@ -176,8 +194,8 @@
 //            }
 //          });
 
-          //监听提交
-          form.on('submit(add)', function(data){
+        //监听提交
+        form.on('submit(add)', function(data){
             console.log(data);
             //发异步，把数据提交给php
             layer.alert("增加成功", {icon: 6},function () {
@@ -187,17 +205,45 @@
                 parent.layer.close(index);
             });
             return false;
-          });
-          
-          
         });
-    </script>
-    <script>var _hmt = _hmt || []; (function() {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-      })();</script>
-  </body>
+
+
+    });
+    {#        $(".id").bind('input propertychange',function () {#}
+    {#            var summary = $(this).val();#}
+    {#            $.get('/score/add'+summary, function (data) {#}
+    {#                console.log(data)#}
+    {#            })#}
+    {#    });#}
+    $(function () {
+        $("#id").bind("input propertychange", function () {
+            $('.abc').empty();
+            $.get('/score/add'+$(this).val(), function (data) {
+                var a = data.subject;
+                var b = data.stu;
+                $('#username').val(b);
+                for (var i = 0; i < a[0].length; i++) {
+                    console.log(i);
+                    $(".abc").append(
+                        "<div class='layui-form-item'><label for='score' class='layui-form-label'><span class='x-red'>*</span>" + a[0][i] + "</label>" +
+                        "<div class='layui-input-inline'><input type='text' id='score' name='score' required=''autocomplete='off' class='layui-input'>" +
+                        "</div><div class='layui-form-mid layui-word-aux'><span class='x-red'>*</span></div></div>"
+                    );
+                }
+{#                $(".abc").append("<div class='layui-form-item'> <label for='L_repass' class='layui-form-label'> </label>" +#}
+{#                    "<button  class='layui-btn' lay-filter='add' lay-submit=''>增加 </button> </div>");#}
+                $(".abc").append("<div class='layui-form-item'> <label for='L_repass' class='layui-form-label'> </label>" +
+                    "<input type='submit' value='增加' class='layui-btn'/> </div>");
+            });
+        });
+    })
+</script>
+<script>var _hmt = _hmt || []; (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();</script>
+</body>
 
 </html>

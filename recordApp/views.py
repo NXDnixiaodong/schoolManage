@@ -1,16 +1,15 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
+from django.contrib.auth.decorators import login_required
 import json
-
 from django.core.paginator import Paginator
 from django.http import JsonResponse
 from django.shortcuts import render
-
 from recordApp.models import StuInfo, Subject, Major, Clazz
 
 
-# Create your views here.
+
+@login_required
 def member_list(request):
     """学生信息维护列表"""
     stu_all = StuInfo.objects.get_in_stu()  # 得到所有的学生信息，除了is_delete = True
@@ -42,6 +41,7 @@ def member_list(request):
     return render(request, 'member-list.html', data)
 
 
+@login_required
 def ajax_status(request):
     """处理AJAX请求，改变学生的状态"""
     # 获取参数
@@ -61,6 +61,7 @@ def ajax_status(request):
     return JsonResponse(data)
 
 
+@login_required
 def ajax_delete(request):
     """处理AJAX请求，删除学生"""
     # 获取参数
@@ -76,6 +77,7 @@ def ajax_delete(request):
     return JsonResponse(data)
 
 
+@login_required
 def ajax_del_all(request):
     """处理AJAX请求，批量删除"""
     # 得到数据
@@ -93,6 +95,7 @@ def ajax_del_all(request):
     return JsonResponse(data)
 
 
+@login_required
 def member_edit(request):
     """处理学生的修改方法"""
     # 通过GET请求的到编辑id
@@ -106,6 +109,7 @@ def member_edit(request):
     })
 
 
+@login_required
 def ajax_stu_edit(request):
     # 获取数据
     id = request.POST.get('id')
@@ -140,6 +144,7 @@ def ajax_stu_edit(request):
     return JsonResponse({})
 
 
+@login_required
 def member_add(request):
     """展示添加界面"""
     # 专业
@@ -155,6 +160,7 @@ def member_add(request):
                                                })
 
 
+@login_required
 def ajax_stu_add(request):
     """学生的添加"""
     # 获得数据
@@ -192,6 +198,7 @@ def ajax_stu_add(request):
     return JsonResponse({})
 
 
+@login_required
 def search_stu(request):
     """搜索活跃学生"""
     start = request.POST.get('start', '')
@@ -231,6 +238,7 @@ def search_stu(request):
     return render(request, 'member-list.html',data)
 
 
+@login_required
 def member_list_rec(request):
     """非活跃学生的处理"""
     stu_all = StuInfo.objects.get_on_stu()
@@ -263,6 +271,7 @@ def member_list_rec(request):
     return render(request, 'member-list-rec.html',data)
 
 
+@login_required
 def ajax_rec(request):
     # 获取恢复学生的stu_id
     stu_id = request.POST.get('stu_id')
@@ -274,6 +283,7 @@ def ajax_rec(request):
     return JsonResponse({})
 
 
+@login_required
 def ajax_rec_all(request):
     """处理AJAX请求，批量恢复"""
     # 得到数据
@@ -291,6 +301,7 @@ def ajax_rec_all(request):
     return JsonResponse(data)
 
 
+@login_required
 def search_rec_stu(request):
     """搜索删除学生"""
     start = request.POST.get('start', '')

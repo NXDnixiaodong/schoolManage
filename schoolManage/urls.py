@@ -26,4 +26,6 @@ urlpatterns = [
     url(r'^staff/', include('staffApp.urls', namespace='staff')),
     url(r'^lib/', include('libApp.urls', namespace='lib')),
     url(r'^welcome/', views.welcome,name='welcome'),
+    url(r'^login/', views.login_index,name='login'),
+    url(r'^loginout/', views.loginout,name='loginout'),
 ]
