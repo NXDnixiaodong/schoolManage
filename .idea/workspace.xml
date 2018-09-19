@@ -2,65 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7ea14521-bfc6-49a9-b085-b69145d22cc4" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/dataSources/12045b13-4159-4053-b1b2-d963b155fd8a/storage_v2/_src_/schema/main.uQUzAA.meta" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/dataSources/443e2fdf-0ec3-4266-be7b-35a22cd83c8c/storage_v2/_src_/schema/main.uQUzAA.meta" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/dataSources/d0526ea2-7ed4-46d9-b880-a7fed071115b/storage_v2/_src_/schema/main.uQUzAA.meta" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/dataSources/e64cbbdb-34b9-48a3-953a-cc33c2ae3309/_metadata_/metadata" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/dataSources/e64cbbdb-34b9-48a3-953a-cc33c2ae3309/_metadata_/metadata.keystream" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/dataSources/e64cbbdb-34b9-48a3-953a-cc33c2ae3309/_metadata_/metadata.keystream.len" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/dataSources/e64cbbdb-34b9-48a3-953a-cc33c2ae3309/_metadata_/metadata.len" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/dataSources/e64cbbdb-34b9-48a3-953a-cc33c2ae3309/_metadata_/metadata.values.at" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/dataSources/e64cbbdb-34b9-48a3-953a-cc33c2ae3309/_metadata_/metadata_i" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/dataSources/e64cbbdb-34b9-48a3-953a-cc33c2ae3309/_metadata_/metadata_i.len" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/dataSources/e64cbbdb-34b9-48a3-953a-cc33c2ae3309/storage.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/dataSources/e64cbbdb-34b9-48a3-953a-cc33c2ae3309/storage_v2/_src_/schema/main.uQUzAA.meta" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/deployment.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/libApp/migrations/0002_auto_20180918_0933.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/images/favicon.ico" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/images/lib-test.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/templates/clazz.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/templates/find.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/templates/grade.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/templates/lib-add.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/templates/lib-test.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/templates/lib-update.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/templates/member-list-rec.html" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/991bd5f8-376b-4b17-bfee-e123fa7a5a44.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/schoolManage.iml" afterPath="$PROJECT_DIR$/.idea/schoolManage.iml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
-      <change beforePath="$PROJECT_DIR$/libApp/urls.py" afterPath="$PROJECT_DIR$/libApp/urls.py" />
-      <change beforePath="$PROJECT_DIR$/libApp/views.py" afterPath="$PROJECT_DIR$/libApp/views.py" />
-      <change beforePath="$PROJECT_DIR$/recordApp/models.py" afterPath="$PROJECT_DIR$/recordApp/models.py" />
-      <change beforePath="$PROJECT_DIR$/recordApp/urls.py" afterPath="$PROJECT_DIR$/recordApp/urls.py" />
-      <change beforePath="$PROJECT_DIR$/recordApp/views.py" afterPath="$PROJECT_DIR$/recordApp/views.py" />
-      <change beforePath="$PROJECT_DIR$/schoolManage/settings.py" afterPath="$PROJECT_DIR$/schoolManage/settings.py" />
-      <change beforePath="$PROJECT_DIR$/schoolManage/urls.py" afterPath="$PROJECT_DIR$/schoolManage/urls.py" />
-      <change beforePath="$PROJECT_DIR$/schoolManage/views.py" afterPath="$PROJECT_DIR$/schoolManage/views.py" />
-      <change beforePath="$PROJECT_DIR$/scoreApp/models.py" afterPath="$PROJECT_DIR$/scoreApp/models.py" />
-      <change beforePath="$PROJECT_DIR$/scoreApp/urls.py" afterPath="$PROJECT_DIR$/scoreApp/urls.py" />
-      <change beforePath="$PROJECT_DIR$/scoreApp/views.py" afterPath="$PROJECT_DIR$/scoreApp/views.py" />
-      <change beforePath="$PROJECT_DIR$/staffApp/urls.py" afterPath="$PROJECT_DIR$/staffApp/urls.py" />
-      <change beforePath="$PROJECT_DIR$/staffApp/views.py" afterPath="$PROJECT_DIR$/staffApp/views.py" />
-      <change beforePath="$PROJECT_DIR$/templates/admin-add.html" afterPath="$PROJECT_DIR$/templates/admin-add.html" />
-      <change beforePath="$PROJECT_DIR$/templates/admin-edit.html" afterPath="$PROJECT_DIR$/templates/admin-edit.html" />
-      <change beforePath="$PROJECT_DIR$/templates/admin-list.html" afterPath="$PROJECT_DIR$/templates/admin-list.html" />
-      <change beforePath="$PROJECT_DIR$/templates/index.html" afterPath="$PROJECT_DIR$/templates/index.html" />
-      <change beforePath="$PROJECT_DIR$/templates/lib-list.html" afterPath="$PROJECT_DIR$/templates/lib-manage.html" />
-      <change beforePath="$PROJECT_DIR$/templates/lib-man.html" afterPath="$PROJECT_DIR$/templates/lib-search.html" />
-      <change beforePath="$PROJECT_DIR$/templates/login.html" afterPath="$PROJECT_DIR$/templates/login.html" />
-      <change beforePath="$PROJECT_DIR$/templates/member-add.html" afterPath="$PROJECT_DIR$/templates/member-add.html" />
-      <change beforePath="$PROJECT_DIR$/templates/member-del.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/templates/member-edit.html" afterPath="$PROJECT_DIR$/templates/member-edit.html" />
-      <change beforePath="$PROJECT_DIR$/templates/member-list.html" afterPath="$PROJECT_DIR$/templates/member-list.html" />
-      <change beforePath="$PROJECT_DIR$/templates/member-list1.html" afterPath="$PROJECT_DIR$/templates/lib-borrow.html" />
-      <change beforePath="$PROJECT_DIR$/templates/member-password.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/templates/order-add.html" afterPath="$PROJECT_DIR$/templates/order-add.html" />
-      <change beforePath="$PROJECT_DIR$/templates/order-list.html" afterPath="$PROJECT_DIR$/templates/order-list.html" />
-      <change beforePath="$PROJECT_DIR$/templates/welcome.html" afterPath="$PROJECT_DIR$/templates/welcome.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -106,32 +49,7 @@
     <favorites_list name="schoolManage" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/recordApp/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="455">
-              <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="15" />
-              <folding>
-                <element signature="e#24#63#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/libApp/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
-              <caret line="104" column="0" lean-forward="false" selection-start-line="104" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
-              <folding>
-                <element signature="e#24#63#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -218,24 +136,8 @@
         <subPane>
           <expand>
             <path>
-              <item name="schoolManage" type="b2602c69:ProjectViewProjectNode" />
+              <item name="schoolManager" type="b2602c69:ProjectViewProjectNode" />
               <item name="schoolManage" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="schoolManage" type="b2602c69:ProjectViewProjectNode" />
-              <item name="schoolManage" type="462c0819:PsiDirectoryNode" />
-              <item name="libApp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="schoolManage" type="b2602c69:ProjectViewProjectNode" />
-              <item name="schoolManage" type="462c0819:PsiDirectoryNode" />
-              <item name="libApp" type="462c0819:PsiDirectoryNode" />
-              <item name="migrations" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="schoolManage" type="b2602c69:ProjectViewProjectNode" />
-              <item name="schoolManage" type="462c0819:PsiDirectoryNode" />
-              <item name="recordApp" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -346,7 +248,14 @@
       <option name="project" value="LOCAL" />
       <updated>1537348713127</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="实现教职工功能">
+      <created>1537359376058</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1537359376058</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -354,11 +263,11 @@
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27596438" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34271726" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32956153" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32937685" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18959843" sideWeight="0.4989899" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18959843" sideWeight="0.4989899" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295362" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -386,7 +295,8 @@
     <MESSAGE value="图书管理功能" />
     <MESSAGE value="新增图书管理功能" />
     <MESSAGE value="合并图书管理" />
-    <option name="LAST_COMMIT_MESSAGE" value="合并图书管理" />
+    <MESSAGE value="实现教职工功能" />
+    <option name="LAST_COMMIT_MESSAGE" value="实现教职工功能" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -424,6 +334,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1840">
           <caret line="92" column="88" lean-forward="false" selection-start-line="92" selection-start-column="88" selection-end-line="92" selection-end-column="88" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -431,6 +342,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="15" column="24" lean-forward="false" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -476,6 +388,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2001">
           <caret line="87" column="46" lean-forward="false" selection-start-line="87" selection-start-column="46" selection-end-line="87" selection-end-column="46" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -591,6 +504,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="142" column="35" lean-forward="false" selection-start-line="142" selection-start-column="23" selection-end-line="142" selection-end-column="35" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -613,6 +527,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="15" column="24" lean-forward="false" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -620,6 +535,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1840">
           <caret line="92" column="88" lean-forward="false" selection-start-line="92" selection-start-column="88" selection-end-line="92" selection-end-column="88" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -638,20 +554,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/recordApp/views.py">
+    <entry file="file://$PROJECT_DIR$/libApp/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="455">
-          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="15" />
+        <state relative-caret-position="624">
+          <caret line="104" column="0" lean-forward="false" selection-start-line="104" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
           <folding>
             <element signature="e#24#63#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/libApp/views.py">
+    <entry file="file://$PROJECT_DIR$/recordApp/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="104" column="0" lean-forward="false" selection-start-line="104" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
+        <state relative-caret-position="260">
+          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="15" />
           <folding>
             <element signature="e#24#63#0" expanded="true" />
           </folding>
