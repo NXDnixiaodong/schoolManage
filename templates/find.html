@@ -23,20 +23,20 @@
 <div class="x-nav">
       <span class="layui-breadcrumb">
         <a href="#">首页</a>
-        <a href="/score/">成绩管理</a>
+        <a href="#">成绩管理</a>
         <a>
           <cite>成绩管理</cite></a>
       </span>
-    <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
+    <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="." title="刷新">
         <i class="layui-icon" style="line-height:30px">ဂ</i></a>
 </div>
 <div class="x-body">
     <div class="layui-row">
 
         <form class="layui-form layui-col-md12 x-so" method="post" action="{% url 'score:find' %}">{% csrf_token %}
-            <input class="layui-input" placeholder="开始日" name="start" id="start" required>
-            <input class="layui-input" placeholder="截止日" name="end" id="end" required>
-            <input type="text" name="username"  placeholder="请输入学号" autocomplete="off" class="layui-input" required>
+            <input class="layui-input" placeholder="开始日" name="start" id="start">
+            <input class="layui-input" placeholder="截止日" name="end" id="end">
+            <input type="text" name="username"  placeholder="请输入学号" autocomplete="off" class="layui-input">
             <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
         </form>
 
@@ -54,7 +54,6 @@
 {#            </th>#}
             <th>学生编号</th>
             <th>姓名</th>
-            <th>班级</th>
             <th>所选课程</th>
             <th>成绩</th>
             <th>考试时间</th>
@@ -64,15 +63,11 @@
         <tbody>
         {% for i in stu %}
         <tr>
-{#            <td>#}
-{#                <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>#}
-{#            </td>#}
-            <td>{{ i.0.id }}</td>
-            <td>{{ i.0 }}</td>
-            <td>{{ i.0.clazz }}</td>
-            <td>{% for j in i.1 %} {{ j.subject }} {% endfor %}</td>
-            <td>{% for j in i.1 %} {{ j.score }} {% endfor %}</td>
-            <td >{{ i.2 }}</td>
+            <td>{{ i.name.id }}</td>
+            <td>{{ i}}</td>
+            <td>{{ i.subject }}</td>
+            <td>{{ i.score }}</td>
+            <td >{{ i.exam_date }}</td>
             <td class="td-manage">
                 <!--<a title="查看"  onclick="x_admin_show('编辑','order-view.html')" href="javascript:;">-->
                 <!--<i class="layui-icon">&#xe63c;</i>-->

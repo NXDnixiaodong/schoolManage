@@ -35,11 +35,11 @@
         <!--</ul>-->
         <ul class="layui-nav right" lay-filter="">
           <li class="layui-nav-item">
-            <a href="javascript:;">admin</a>
+            <a href="javascript:;">{{ user.username }}</a>
             <dl class="layui-nav-child"> <!-- 二级菜单 -->
               <dd><a onclick="x_admin_show('个人信息','http://www.baidu.com')">个人信息</a></dd>
-              <dd><a onclick="x_admin_show('切换帐号','http://www.baidu.com')">切换帐号</a></dd>
-              <dd><a href="./login.html">退出</a></dd>
+              <dd><a onclick="x_admin_show('切换帐号',"{% url 'loginout' %}">切换帐号</a></dd>
+              <dd><a href="{% url 'loginout' %}">退出</a></dd>
             </dl>
           </li>
           <!--<li class="layui-nav-item to-index"><a href="/">前台首页</a></li>-->
@@ -70,7 +70,6 @@
                         <a _href="/templates/member-list1.html">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>教师信息维护</cite>
-
                         </a>
                     </li >
 
@@ -122,11 +121,23 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="/templates/order-list.html">
+                        <a _href="{% url 'score:index' %}">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>成绩列表</cite>
                         </a>
                     </li >
+                    <li>
+                        <a _href="{% url 'score:clazz' %}">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>班级成绩统计</cite>
+                        </a>
+                    </li >
+{#                    <li>#}
+{#                        <a _href="{% url 'score:grade' %}">#}
+{#                            <i class="iconfont">&#xe6a7;</i>#}
+{#                            <cite>年级成绩统计</cite>#}
+{#                        </a>#}
+{#                    </li >#}
                 </ul>
             </li>
 
@@ -176,17 +187,17 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="/templates/admin-list.html">
+                        <a _href="{% url 'staff:index' %}">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>管理员列表</cite>
                         </a>
                     </li >
-                    <li>
-                        <a _href="/templates/admin-role.html">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>角色管理</cite>
-                        </a>
-                    </li >
+{#                    <li>#}
+{#                        <a _href="/templates/admin-role.html">#}
+{#                            <i class="iconfont">&#xe6a7;</i>#}
+{#                            <cite>角色管理</cite>#}
+{#                        </a>#}
+{#                    </li >#}
                     <!--<li>-->
                         <!--<a _href="admin-cate.html">-->
                             <!--<i class="iconfont">&#xe6a7;</i>-->
