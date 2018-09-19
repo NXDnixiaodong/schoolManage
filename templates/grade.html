@@ -33,46 +33,58 @@
 <div class="x-body">
     <div class="layui-row">
 
-        <form class="layui-form layui-col-md12 x-so" method="post" action="{% url 'score:find' %}">{% csrf_token %}
-            <input class="layui-input" placeholder="开始日" name="start" id="start" required>
-            <input class="layui-input" placeholder="截止日" name="end" id="end" required>
-            <input type="text" name="username"  placeholder="请输入学号" autocomplete="off" class="layui-input" required>
+        <form class="layui-form layui-col-md12 x-so" method="post" action="{% url 'score:grade' %}">{% csrf_token %}
+            <label for="grade">请选择年级: &emsp;</label>
+            <div class="layui-input-inline">
+                <select name="grade" id="grade" lay-verify="required">
+                    <option value="大一">大一</option>
+                    <option value="大二">大二</option>
+                    <option value="大三">大三</option>
+                    <option value="大四">大四</option>
+                </select>
+            </div>
+            <label for="exam_type"> 请选择考试类型: &emsp;</label>
+            <div class="layui-input-inline">
+                <select name="exam_type" lay-verify="required" id="zcySelect">
+                      <option value="期中考试">期中考试</option>
+                      <option value="期末考试">期末考试</option>
+                      <option value="模拟考试">模拟考试</option>
+                </select>
+            </div>
+            <label for="end"> 请选择考试日期: &emsp;</label>
+            <input class="layui-input" placeholder="考试日期" name="date" id="end" required>
             <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
         </form>
 
     </div>
-    <xblock>
+{#    <xblock>#}
 {#        <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>#}
-        <button class="layui-btn" onclick="x_admin_show('增加成绩信息','/score/add/')"><i class="layui-icon"></i>添加</button>
-        <span class="x-right" style="line-height:40px">共有数据：{{ stu|length }} 条</span>
-    </xblock>
+{#        <button class="layui-btn" onclick="x_admin_show('增加成绩信息','/score/add/')"><i class="layui-icon"></i>添加</button>#}
+{#        <span class="x-right" style="line-height:40px">共有数据：{{ stu|length }} 条</span>#}
+{#    </xblock>#}
     <table class="layui-table">
         <thead>
+
         <tr>
-{#            <th>#}
-{#                <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>#}
-{#            </th>#}
             <th>学生编号</th>
             <th>姓名</th>
-            <th>班级</th>
             <th>所选课程</th>
             <th>成绩</th>
             <th>考试时间</th>
             <th >操作</th>
         </tr>
         </thead>
+
         <tbody>
-        {% for i in stu %}
+        {% if stus %}
+
+        {% for stu, scores in stus.items %}
         <tr>
-{#            <td>#}
-{#                <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>#}
-{#            </td>#}
-            <td>{{ i.0.id }}</td>
-            <td>{{ i.0 }}</td>
-            <td>{{ i.0.clazz }}</td>
-            <td>{% for j in i.1 %} {{ j.subject }} {% endfor %}</td>
-            <td>{% for j in i.1 %} {{ j.score }} {% endfor %}</td>
-            <td >{{ i.2 }}</td>
+            <td>{{ stu.id }}</td>
+            <td>{{ stu.name }}</td>
+            <td>{% for i in scores.0 %} {{ i.subject }} {% endfor %}</td>
+            <td>{% for i in scores.0 %} {{ i.score }} {% endfor %}</td>
+            <td >{{ scores.0.first.exam_date }}</td>
             <td class="td-manage">
                 <!--<a title="查看"  onclick="x_admin_show('编辑','order-view.html')" href="javascript:;">-->
                 <!--<i class="layui-icon">&#xe63c;</i>-->
@@ -83,6 +95,9 @@
             </td>
         </tr>
         {% endfor %}
+            {% else %}
+            没有当前查询结果！
+        {% endif %}
         </tbody>
     </table>
     <div class="page">

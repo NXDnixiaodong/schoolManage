@@ -1,169 +1,207 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>学生管理系统</title>
-        <meta name="renderer" content="webkit">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
-        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-        <link rel="stylesheet" href="/static/css/font.css">
-        <link rel="stylesheet" href="/static/css/xadmin.css">
-    </head>
-    <body>
-    <div class="x-body layui-anim layui-anim-up">
-        <blockquote class="layui-elem-quote">欢迎管理员：
-            <span class="x-red">test</span>！当前时间:2018-04-25 20:50:53</blockquote>
-        <fieldset class="layui-elem-field">
-            <legend>数据统计</legend>
-            <div class="layui-field-box">
-                <div class="layui-col-md12">
-                    <div class="layui-card">
-                        <div class="layui-card-body">
-                            <div class="layui-carousel x-admin-carousel x-admin-backlog" lay-anim="" lay-indicator="inside" lay-arrow="none" style="width: 100%; height: 90px;">
-                                <div carousel-item="">
-                                    <ul class="layui-row layui-col-space10 layui-this">
-                                        <li class="layui-col-xs2">
-                                            <a href="javascript:;" class="x-admin-backlog-body">
-                                                <h3>管理员数</h3>
-                                                <p>
-                                                    <cite>66</cite></p>
-                                            </a>
-                                        </li>
-                                        <li class="layui-col-xs2">
-                                            <a href="javascript:;" class="x-admin-backlog-body">
-                                                <h3>学生数</h3>
-                                                <p>
-                                                    <cite>12</cite></p>
-                                            </a>
-                                        </li>
-                                        <li class="layui-col-xs2">
-                                            <a href="javascript:;" class="x-admin-backlog-body">
-                                                <h3>教师数</h3>
-                                                <p>
-                                                    <cite>99</cite></p>
-                                            </a>
-                                        </li>
-                                        <li class="layui-col-xs2">
-                                            <a href="javascript:;" class="x-admin-backlog-body">
-                                                <h3>全校总数</h3>
-                                                <p>
-                                                    <cite>67</cite></p>
-                                            </a>
-                                        </li>
-                                        <li class="layui-col-xs2">
-                                            <a href="javascript:;" class="x-admin-backlog-body">
-                                                <h3>馆藏数</h3>
-                                                <p>
-                                                    <cite>67</cite></p>
-                                            </a>
-                                        </li>
-                                        <li class="layui-col-xs2">
-                                            <a href="javascript:;" class="x-admin-backlog-body">
-                                                <h3>当前版本</h3>
-                                                <p>
-                                                    <cite>V 0.1</cite></p>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
+<head>
+    <meta charset="UTF-8">
+    <title>学生管理系统</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/static/css/font.css">
+    <link rel="stylesheet" href="/static/css/xadmin.css">
+</head>
+<body>
+<div class="x-body layui-anim layui-anim-up">
+    <blockquote class="layui-elem-quote">欢迎管理员：
+        <span class="x-red">{{ user.username }}</span>！当前时间: <span id="show"></span></blockquote>
+    <fieldset class="layui-elem-field">
+        <legend>数据统计</legend>
+        <div class="layui-field-box">
+            <div class="layui-col-md12">
+                <div class="layui-card">
+                    <div class="layui-card-body">
+                        <div class="layui-carousel x-admin-carousel x-admin-backlog" lay-anim="" lay-indicator="inside" lay-arrow="none" style="width: 100%; height: 90px;">
+                            <div carousel-item="">
+                                <ul class="layui-row layui-col-space10 layui-this">
+                                    <li class="layui-col-xs2">
+                                        <a href="javascript:;" class="x-admin-backlog-body">
+                                            <h3>管理员数</h3>
+                                            <p>
+                                                <cite>{{ admin_sum }}</cite></p>
+                                        </a>
+                                    </li>
+                                    <li class="layui-col-xs2">
+                                        <a href="javascript:;" class="x-admin-backlog-body">
+                                            <h3>学生数</h3>
+                                            <p>
+                                                <cite>{{ stu_sum }}</cite></p>
+                                        </a>
+                                    </li>
+                                    <li class="layui-col-xs2">
+                                        <a href="javascript:;" class="x-admin-backlog-body">
+                                            <h3>教师数</h3>
+                                            <p>
+                                                <cite>{{ teacher_sum }}</cite></p>
+                                        </a>
+                                    </li>
+                                    <li class="layui-col-xs2">
+                                        <a href="javascript:;" class="x-admin-backlog-body">
+                                            <h3>全校总数</h3>
+                                            <p>
+                                                <cite>{{ sum }}</cite></p>
+                                        </a>
+                                    </li>
+                                    <li class="layui-col-xs2">
+                                        <a href="javascript:;" class="x-admin-backlog-body">
+                                            <h3>馆藏数</h3>
+                                            <p>
+                                                <cite>{{ book_sum }}</cite></p>
+                                        </a>
+                                    </li>
+                                    <li class="layui-col-xs2">
+                                        <a href="javascript:;" class="x-admin-backlog-body">
+                                            <h3>当前版本</h3>
+                                            <p>
+                                                <cite>V 0.2</cite></p>
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </fieldset>
-        <fieldset class="layui-elem-field">
-            <legend>合作机构</legend>
-            <div class="layui-field-box">
-                <table class="layui-table" lay-skin="line">
-                    <tbody>
-                        <tr>
-                            <td >
-                                <a class="x-a" href="/" target="_blank">清华同方</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td >
-                                <a class="x-a" href="/" target="_blank">北大青鸟</a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </fieldset>
-        <fieldset class="layui-elem-field">
-            <legend>系统信息</legend>
-            <div class="layui-field-box">
-                <table class="layui-table">
-                    <tbody>
-                        <tr>
-                            <th>当前版本</th>
-                            <td>0.1</td></tr>
-                        <tr>
-                            <th>服务器地址</th>
-                            <td>127.0.0.1</td></tr>
-                        <tr>
-                            <th>操作系统</th>
-                            <td>WINNT</td></tr>
-                        <tr>
-                            <th>运行环境</th>
-                            <td>Django_Wisg</td></tr>
-                        <!--<tr>-->
-                            <!--<th>PHP版本</th>-->
-                            <!--<td>5.6.27</td></tr>-->
-                        <!--<tr>-->
-                            <!--<th>PHP运行方式</th>-->
-                            <!--<td>cgi-fcgi</td></tr>-->
-                        <!--<tr>-->
-                            <th>MYSQL版本</th>
-                            <td>5.5.53</td></tr>
-                        <tr>
-                            <th>Python版本</th>
-                            <td>2.7</td></tr>
-                        <!--<tr>-->
-                            <!--<th>上传附件限制</th>-->
-                            <!--<td>2M</td></tr>-->
-                        <!--<tr>-->
-                            <!--<th>执行时间限制</th>-->
-                            <!--<td>30s</td></tr>-->
-                            <!--<tr>-->
-                                <!--<th>剩余空间</th>-->
-                                <!--<td>86015.2M</td></tr>-->
-                    </tbody>
-                </table>
-            </div>
-        </fieldset>
-        <fieldset class="layui-elem-field">
-            <legend>开发团队</legend>
-            <div class="layui-field-box">
-                <table class="layui-table">
-                    <tbody>
-                        <tr>
-                            <th>版权所有</th>
-                            <td>小霸王
-                                <a href="#" class='x-a' target="_blank">访问官网</a></td>
-                        </tr>
-                        <tr>
-                            <th>开发者</th>
-                            <td>宋斌</td>
-                            <td>曹超</td>
-                            <td>倪小东</td>
-                            <td>##</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </fieldset>
-        <blockquote class="layui-elem-quote layui-quote-nm">学生管理系统项目</blockquote>
-    </div>
-        <script>
-        var _hmt = _hmt || [];
-        (function() {
-          var hm = document.createElement("script");
-          hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
-          var s = document.getElementsByTagName("script")[0];
-          s.parentNode.insertBefore(hm, s);
-        })();
-        </script>
-    </body>
+        </div>
+    </fieldset>
+    <fieldset class="layui-elem-field">
+        <legend>合作机构</legend>
+        <div class="layui-field-box">
+            <table class="layui-table" lay-skin="line">
+                <tbody>
+                <tr>
+                    <td >
+                        <a class="x-a" href="/" target="_blank">清华同方</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td >
+                        <a class="x-a" href="/" target="_blank">北大青鸟</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </fieldset>
+    <fieldset class="layui-elem-field">
+        <legend>系统信息</legend>
+        <div class="layui-field-box">
+            <table class="layui-table">
+                <tbody>
+                <tr>
+                    <th>当前版本</th>
+                    <td>0.1</td></tr>
+                <tr>
+                    <th>服务器地址</th>
+                    <td>127.0.0.1</td></tr>
+                <tr>
+                    <th>操作系统</th>
+                    <td>WINNT</td></tr>
+                <tr>
+                    <th>运行环境</th>
+                    <td>Django_Wisg</td></tr>
+                <!--<tr>-->
+                <!--<th>PHP版本</th>-->
+                <!--<td>5.6.27</td></tr>-->
+                <!--<tr>-->
+                <!--<th>PHP运行方式</th>-->
+                <!--<td>cgi-fcgi</td></tr>-->
+                <!--<tr>-->
+                <th>MYSQL版本</th>
+                <td>5.5.53</td></tr>
+                <tr>
+                    <th>Python版本</th>
+                    <td>2.7</td></tr>
+                <!--<tr>-->
+                <!--<th>上传附件限制</th>-->
+                <!--<td>2M</td></tr>-->
+                <!--<tr>-->
+                <!--<th>执行时间限制</th>-->
+                <!--<td>30s</td></tr>-->
+                <!--<tr>-->
+                <!--<th>剩余空间</th>-->
+                <!--<td>86015.2M</td></tr>-->
+                </tbody>
+            </table>
+        </div>
+    </fieldset>
+    <fieldset class="layui-elem-field">
+        <legend>开发团队</legend>
+        <div class="layui-field-box">
+            <table class="layui-table">
+                <tbody>
+                <tr>
+                    <th>版权所有</th>
+                    <td>小霸王
+                        <a href="#" class='x-a' target="_blank">访问官网</a></td>
+                </tr>
+                <tr>
+                    <th>开发者</th>
+                    <td>宋斌</td>
+                    <td>曹超</td>
+                    <td>倪小东</td>
+                    <td>##</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </fieldset>
+    <blockquote class="layui-elem-quote layui-quote-nm">学生管理系统项目</blockquote>
+</div>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<script>
+    window.onload = function(){
+        showTime();     //网页一加载就调用showTime()函数；
+    };
+    function checkTime(i){  //补位处理
+        if(i<10)
+        {
+            i="0"+i;     //当秒分小于10时，在左边补0；
+        }
+        return i;
+    }
+    function showTime(){
+        var now=new Date();
+        var year=now.getFullYear();
+        var month=now.getMonth()+1; //js获取的月份是从0开始；
+        var day=now.getDate();
+        var h=now.getHours();
+        var m=now.getMinutes();
+        var s=now.getSeconds();
+        m=checkTime(m);
+        s=checkTime(s);
+
+        var weekday=new Array(7);
+        weekday[0]="星期日";
+        weekday[1]="星期一";
+        weekday[2]="星期二";
+        weekday[3]="星期三";
+        weekday[4]="星期四";
+        weekday[5]="星期五";
+        weekday[6]="星期六";
+        var w=weekday[now.getDay()]; //js获取的星期是0~6,0是星期天；
+        document.getElementById("show").innerHTML=""+year+"年"+month+"月"+day+"日 "+w+"  "+h+":"+m+":"+s;
+        t=setTimeout('showTime()',500)
+    }
+
+</script>
+</body>
 </html>
