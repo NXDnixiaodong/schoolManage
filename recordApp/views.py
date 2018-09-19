@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-from django.contrib.auth.decorators import login_required
+
 import json
+
+from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.http import JsonResponse
 from django.shortcuts import render
-from recordApp.models import StuInfo, Subject, Major, Clazz
 
+from recordApp.models import StuInfo, Subject, Major, Clazz
 
 
 @login_required
@@ -235,7 +237,7 @@ def search_stu(request):
         'page_range': range(start, end)
     }
 
-    return render(request, 'member-list.html',data)
+    return render(request, 'member-list.html', data)
 
 
 @login_required
@@ -268,7 +270,7 @@ def member_list_rec(request):
         'page_range': range(start, end)
     }
 
-    return render(request, 'member-list-rec.html',data)
+    return render(request, 'member-list-rec.html', data)
 
 
 @login_required
