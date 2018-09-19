@@ -26,7 +26,7 @@
       <span class="layui-breadcrumb">
         <a href="">首页</a>
         <a href="">档案管理</a>
-        <a href="/record/member_list/">
+        <a href="/record/member_list_rec/">
           <cite>学生信息维护</cite></a>
       </span>
     <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"
@@ -35,7 +35,7 @@
 </div>
 <div class="x-body">
     <div class="layui-row">
-        <form class="layui-form layui-col-md12 x-so" action="/record/search_stu/" method="post">
+        <form class="layui-form layui-col-md12 x-so" action="/record/search_rec_stu/" method="post">
             {% csrf_token %}
             <input class="layui-input" placeholder="开始日" name="start" id="start">
             <input class="layui-input" placeholder="截止日" name="end" id="end">
@@ -44,10 +44,7 @@
         </form>
     </div>
     <xblock>
-        <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
-        <button class="layui-btn" onclick="x_admin_show('添加用户','/record/member_add/',600,400)"><i
-                class="layui-icon"></i>添加
-        </button>
+        <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量恢复</button>
         <span class="x-right" style="line-height:40px">共有数据：{{ stu_count }} 条</span>
     </xblock>
     <table class="layui-table">
@@ -77,7 +74,12 @@
                 </td>
                 <td id="stu_id">{{ stu.stu_id }}</td>
                 <td>{{ stu.name }}</td>
-                <td>{{ stu.gender }}</td>
+                {% if stu.gender  %}
+                    <td>男</td>
+                {% else %}
+                    <td>女</td>
+                {% endif %}
+
                 <td>{{ stu.major }}{{ stu.clazz }}班</td>
                 <td>{{ stu.birth }}</td>
                 <td>{{ stu.address }}</td>
@@ -86,18 +88,16 @@
                     <span class="layui-btn layui-btn-normal layui-btn-mini">{{ stu.status }}</span></td>
                 <td class="td-manage">
                     <!--更改学生状态-->
-                    <a onclick="member_stop(this,'10001')" href="javascript:;" title="在校">
-                        <i class="layui-icon">&#xe601;</i>
-                    </a>
+                    {#                    <a onclick="member_stop(this,'10001')" href="javascript:;" title="在校">#}
+                    {#                        <i class="layui-icon">&#xe601;</i>#}
+                    {#                    </a>#}
                     <a title="编辑" onclick="x_admin_show('编辑','/record/member_edit/?id_stu={{ stu.id }}',600,400)"
                        href="javascript:;">
                         <i class="layui-icon">&#xe642;</i>
                     </a>
-                    <!--<a onclick="x_admin_show('修改密码','member-password.html',600,400)" title="修改密码" href="javascript:;">-->
-                    <!--<i class="layui-icon">&#xe631;</i>-->
-                    <!--</a>-->
-                    <a title="删除" onclick="member_del(this,'要删除的id')" href="javascript:;">
-                        <i class="layui-icon">&#xe640;</i>
+
+                    <a title="恢复" onclick="member_del(this,'要恢复的id')" href="javascript:;">
+                        <i class="layui-icon">&#xe62f;</i>
                     </a>
                 </td>
             </tr>
@@ -108,7 +108,7 @@
     <div class="page">
         <div>
             {% if page.has_previous %}
-                <a class="prev" href="/record/member_list/?num={{ page.previous_page_number }}">&lt;&lt;</a>
+                <a class="prev" href="/record/member_list_rec/?num={{ page.previous_page_number }}">&lt;&lt;</a>
             {% endif %}
 
             {% for i in page_range %}
@@ -116,13 +116,13 @@
                     <span class="current">{{ i }}</span>
 
                 {% else %}
-                    <a class="num" href="/record/member_list/?num={{ i }}">{{ i }}</a></a>
+                    <a class="num" href="/record/member_list_rec/?num={{ i }}">{{ i }}</a></a>
 
                 {% endif %}
             {% endfor %}
 
             {% if page.has_next %}
-                <a class="next" href="/record/member_list/?num={{ page.next_page_number }}">&gt;&gt;</a>
+                <a class="next" href="/record/member_list_rec/?num={{ page.next_page_number }}">&gt;&gt;</a>
             {% endif %}
 
         </div>
@@ -144,48 +144,22 @@
         });
     });
 
-    /*用户-停用*/
-    function member_stop(obj, id) {
-        if ($(obj).attr('title') == '在校') {
-            layer.confirm('确认执行吗？', function (index) {
-                $.ajax({
-                    url: '/record/ajax_status/',
-                    type: 'POST',
-                    data: {
-                        csrfmiddlewaretoken: '{{ csrf_token }}',
-                        'stu_id': $("#stu_id").html(),
-                        'status': '离校',
-                    },
-                    dataType: 'JSON',
-                    success: function (data) {
-                        //发异步把用户状态进行更改
-                        var temp = data['ststus'];
-                        $(obj).attr('title', '离校');
-                        $(obj).find('i').html('&#xe62f;');
-                        $(obj).parents("tr").find(".td-status").find('span').addClass('layui-btn-disabled').html('离校');
-                        layer.msg('离校', {icon: 5, time: 1000});
-                    }
-                })
-            })
-        }
-    }
 
-    /*用户-删除*/
+    /*用户-恢复*/
     function member_del(obj, id) {
-        layer.confirm('确认要删除吗？', function (index) {
+        layer.confirm('确认要恢复吗？', function (index) {
             $.ajax({
-                url: '/record/ajax_del/',
+                url: '/record/ajax_rec/',
                 type: 'POST',
                 data: {
                     csrfmiddlewaretoken: '{{ csrf_token }}',
                     'stu_id': $("#stu_id").html(),
-                    'is_delele': '1',
                 },
                 dataType: 'json',
                 success: function (date) {
                     //发异步删除数据
                     $(obj).parents("tr").remove();
-                    layer.msg('已删除!', {icon: 1, time: 1000});
+                    layer.msg('已恢复!', {icon: 1, time: 1000});
                 }
             })
 
@@ -195,11 +169,11 @@
 
     function delAll(argument) {
 
-        layer.confirm('确认要删除吗？', function (index) {
+        layer.confirm('确认要恢复吗？', function (index) {
             var data = tableCheck.getData();
             data = JSON.stringify(data);
             $.ajax({
-                url: '/record/ajax_del_all/',
+                url: '/record/ajax_rec_all/',
                 type: 'POST',
                 data: {
                     csrfmiddlewaretoken: '{{ csrf_token }}',
@@ -208,7 +182,7 @@
                 dataType: 'json',
                 success: function (data) {
                     //捉到所有被选中的，发异步进行删除
-                    layer.msg('删除成功', {icon: 1});
+                    layer.msg('恢复成功', {icon: 1});
                     $(".layui-form-checked").not('.header').parents('tr').remove();
                 }
             })
