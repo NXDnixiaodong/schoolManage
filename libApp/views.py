@@ -38,7 +38,7 @@ def list_view(request,num=1):
 
 
 def manage_view(request):
-    return render(request, 'lib-borrow.html')
+    return render(request, 'lib-test.html')
 
 
 def add_view(request):
