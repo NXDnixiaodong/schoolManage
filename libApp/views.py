@@ -11,7 +11,6 @@ from django.shortcuts import render
 from libApp.models import BookInfo
 
 
-@login_required
 def page(num, size):
     num = int(num)
 
