@@ -3,6 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>学生管理系统</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/static/images/favicon.ico" />
 	<meta name="renderer" content="webkit|ie-comp|ie-stand">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
@@ -35,11 +36,11 @@
         <!--</ul>-->
         <ul class="layui-nav right" lay-filter="">
           <li class="layui-nav-item">
-            <a href="javascript:;">admin</a>
+            <a href="javascript:;">{{ user.username }}</a>
             <dl class="layui-nav-child"> <!-- 二级菜单 -->
               <dd><a onclick="x_admin_show('个人信息','http://www.baidu.com')">个人信息</a></dd>
-              <dd><a onclick="x_admin_show('切换帐号','http://www.baidu.com')">切换帐号</a></dd>
-              <dd><a href="./login.html">退出</a></dd>
+              <dd><a onclick="x_admin_show('切换帐号',"{% url 'loginout' %}">切换帐号</a></dd>
+              <dd><a href="{% url 'loginout' %}">退出</a></dd>
             </dl>
           </li>
           <!--<li class="layui-nav-item to-index"><a href="/">前台首页</a></li>-->
@@ -55,63 +56,24 @@
             <li>
                 <a href="javascript:;">
                     <i class="iconfont">&#xe6b8;</i>
-                    <cite>档案管理</cite>
+                    <cite>学生档案管理</cite>
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="/templates/member-list.html">
+                        <a _href="/record/member_list/">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>学生信息维护</cite>
                         </a>
                     </li >
 
                     <li>
-                        <a _href="/templates/member-list1.html">
+                        <a _href="/record/member_list_rec/">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>教师信息维护</cite>
+                            <cite>学生信息回收站</cite>
 
-                        </a>
-                    </li >
-
-                    <li>
-                        <a _href="/templates/member-del.html">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>信息回收站</cite>
-                            
                         </a>
                     </li>
-                    <!--<li>-->
-                        <!--<a href="javascript:;">-->
-                            <!--<i class="iconfont">&#xe70b;</i>-->
-                            <!--<cite>会员管理</cite>-->
-                            <!--<i class="iconfont nav_right">&#xe697;</i>-->
-                        <!--</a>-->
-                        <!--<ul class="sub-menu">-->
-                            <!--<li>-->
-                                <!--<a _href="xxx.html">-->
-                                    <!--<i class="iconfont">&#xe6a7;</i>-->
-                                    <!--<cite>会员列表</cite>-->
-                                    <!---->
-                                <!--</a>-->
-                            <!--</li >-->
-                            <!--<li>-->
-                                <!--<a _href="xx.html">-->
-                                    <!--<i class="iconfont">&#xe6a7;</i>-->
-                                    <!--<cite>会员删除</cite>-->
-                                    <!---->
-                                <!--</a>-->
-                            <!--</li>-->
-                            <!--<li>-->
-                                <!--<a _href="xx.html">-->
-                                    <!--<i class="iconfont">&#xe6a7;</i>-->
-                                    <!--<cite>等级管理</cite>-->
-                                    <!---->
-                                <!--</a>-->
-                            <!--</li>-->
-                            <!---->
-                        <!--</ul>-->
-                    <!--</li>-->
                 </ul>
             </li>
             <li>
@@ -122,11 +84,23 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="/templates/order-list.html">
+                        <a _href="{% url 'score:index' %}">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>成绩列表</cite>
                         </a>
                     </li >
+                    <li>
+                        <a _href="{% url 'score:clazz' %}">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>班级成绩统计</cite>
+                        </a>
+                    </li >
+{#                    <li>#}
+{#                        <a _href="{% url 'score:grade' %}">#}
+{#                            <i class="iconfont">&#xe6a7;</i>#}
+{#                            <cite>年级成绩统计</cite>#}
+{#                        </a>#}
+{#                    </li >#}
                 </ul>
             </li>
 
@@ -138,9 +112,16 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="/templates/liber.html">
+                        <a _href="/staff/staffadd/">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>职工分类</cite>
+                            <cite>新增教师</cite>
+                        </a>
+                    </li >
+
+                    <li>
+                        <a _href="/staff/stafflist/">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>全部教师</cite>
                         </a>
                     </li >
                 </ul>
@@ -176,17 +157,17 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="/templates/admin-list.html">
+                        <a _href="{% url 'staff:index' %}">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>管理员列表</cite>
                         </a>
                     </li >
-                    <li>
-                        <a _href="/templates/admin-role.html">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>角色管理</cite>
-                        </a>
-                    </li >
+{#                    <li>#}
+{#                        <a _href="/templates/admin-role.html">#}
+{#                            <i class="iconfont">&#xe6a7;</i>#}
+{#                            <cite>角色管理</cite>#}
+{#                        </a>#}
+{#                    </li >#}
                     <!--<li>-->
                         <!--<a _href="admin-cate.html">-->
                             <!--<i class="iconfont">&#xe6a7;</i>-->
@@ -296,7 +277,7 @@
     <!-- 中部结束 -->
     <!-- 底部开始 -->
     <div class="footer">
-        <div class="copyright">Copyright ©2017 x-admin v2.3 All Rights Reserved</div>
+        <div class="copyright">Just test the use,<a href="https://github.com/bbbi/schoolManage.git">GitHub</a></div>
     </div>
     <!-- 底部结束 -->
     <script>

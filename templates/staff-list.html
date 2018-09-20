@@ -3,16 +3,16 @@
   
   <head>
     <meta charset="UTF-8">
-    <title>欢迎页面-X-admin2.0</title>
+    <title>教师档案管理</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="./css/font.css">
-    <link rel="stylesheet" href="./css/xadmin.css">
-    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="./lib/layui/layui.js" charset="utf-8"></script>
-    <script type="text/javascript" src="./js/xadmin.js"></script>
+{#    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />#}
+    <link rel="stylesheet" href="/static/css/font.css">
+    <link rel="stylesheet" href="/static/css/xadmin.css">
+    <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/static/js/xadmin.js"></script>
     <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
     <!--[if lt IE 9]>
       <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
@@ -33,65 +33,61 @@
     </div>
     <div class="x-body">
       <div class="layui-row">
-        <form class="layui-form layui-col-md12 x-so">
-          <input class="layui-input" placeholder="开始日" name="start" id="start">
-          <input class="layui-input" placeholder="截止日" name="end" id="end">
-          <input type="text" name="username"  placeholder="请输入用户名" autocomplete="off" class="layui-input">
+        <form class="layui-form layui-col-md12 x-so" action="/staff/staffsearch/" method="get">
+          <input type="text" name="name"  placeholder="请输入教师姓名" autocomplete="off" class="layui-input">
           <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
         </form>
       </div>
       <xblock>
-        <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
-        <button class="layui-btn" onclick="x_admin_show('添加用户','./member-add.html',600,400)"><i class="layui-icon"></i>添加</button>
-        <span class="x-right" style="line-height:40px">共有数据：88 条</span>
+        <span class="x-right" style="line-height:40px">共有数据{{ staffs.count }}条</span>
       </xblock>
       <table class="layui-table">
         <thead>
           <tr>
-            <th>
-              <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
-            </th>
-            <th>学生编号</th>
-            <th>学生姓名</th>
+            <th>教师编号</th>
+            <th>教师姓名</th>
             <th>性别</th>
-            <th>专业班级</th>
-            <th>出生日期</th>
+            <th>年龄</th>
             <th>地址</th>
-            <th>入学时间</th>
-            <th>状态</th>
-            <th>操作</th></tr>
+            <th>电话号码</th>
+            <th>学历</th>
+            <th>毕业院校</th>
+            <th>入职时间</th>
+            <th>所带班级</th>
+            <th>所带课程</th>
+            <th>修改</th></tr>
         </thead>
         <tbody>
+          {% for staff in staffs %}
           <tr>
+            <td>{{ staff.tea_id }}</td>
+            <td>{{ staff.name }}</td>
+            {% if staff.gender == 1 %}
+                <td>男</td>
+            {% else %}
+                <td>女</td>
+            {% endif %}
+            <td>{{ staff.age }}</td>
+            <td>{{ staff.address }}</td>
+            <td>{{ staff.tel_num }}</td>
+            <td>{{ staff.education }}</td>
+            <td>{{ staff.over_school }}</td>
+            <td>{{ staff.create_date }}</td>
             <td>
-              <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
+                {% for cz in staff.clazz.all %}
+                    {{ cz.name }} <br>
+                {% endfor %}
             </td>
-            <td>1</td>
-            <td>小明</td>
-            <td>男</td>
-            <td>13000000000</td>
-            <td>admin@mail.com</td>
-            <td>北京市 海淀区</td>
-            <td>2017-01-01 11:11:42</td>
-            <td class="td-status">
-              <span class="layui-btn layui-btn-normal layui-btn-mini">在校生</span></td>
-            <td class="td-manage">
-              <!--更改学生状态-->
-              <a onclick="member_stop(this,'10001')" href="javascript:;"  title="启用">
-                <i class="layui-icon">&#xe601;</i>
-              </a>
-              <!--<a title="编辑"  onclick="x_admin_show('编辑','member-edit.html',600,400)" href="javascript:;">-->
-                <!--<i class="layui-icon">&#xe642;</i>-->
-              <!--</a>-->
-              <!--<a onclick="x_admin_show('修改密码','member-password.html',600,400)" title="修改密码" href="javascript:;">-->
-                <!--<i class="layui-icon">&#xe631;</i>-->
-              <!--</a>-->
-              <a title="删除" onclick="member_del(this,'要删除的id')" href="javascript:;">
-                <i class="layui-icon">&#xe640;</i>
-              </a>
+            <td>
+                {% for cr in staff.subject.all %}
+                    {{ cr.name }} <br>
+                {% endfor %}
+            </td>
+            <td>
+                <a style="color: #00aced;" href="/staff/staffupdate/{{ staff.tea_id }}">修改</a>
             </td>
           </tr>
-
+          {% endfor %}
           <!--<tr>-->
             <!--<td>-->
               <!--<div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>-->
@@ -122,14 +118,22 @@
           <!--</tr>-->
         </tbody>
       </table>
+
       <div class="page">
         <div>
-          <a class="prev" href="">&lt;&lt;</a>
-          <a class="num" href="">1</a>
-          <span class="current">2</span>
-          <a class="num" href="">3</a>
-          <a class="num" href="">489</a>
-          <a class="next" href="">&gt;&gt;</a>
+          {% if staffs.has_previous %}
+              <a style="color: black;" class="page-number" href="/staff/staffpage/{{ staffs.previous_page_number }}">previous</a>
+          {% endif %}
+          {% for page in page_range %}
+               {% if page.number == page %}
+                   <a style="color: black; font-weight: bold;" class="page-number" href="/staff/{{ page }}">{{ page }}</a>
+               {% else %}
+                   <a class="page-number" href="/staff/staffpage/{{ page }}">{{ page }}</a>
+               {% endif %}
+          {% endfor %}
+          {% if staffs.has_next %}
+              <a style="color: black;" class="page-number" href="/staff/staffpage/{{ staffs.next_page_number }}">next</a>
+          {% endif %}
         </div>
       </div>
 

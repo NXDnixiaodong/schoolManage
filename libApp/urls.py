@@ -14,7 +14,6 @@ urlpatterns = [
     url(r'^update/(\d+)$', views.update_view),
     url(r'^update/', views.update_view),
     url(r'^update1/(\d+)$', views.update1_view),
-    # url(r'^delete/', views.delete_view),
     url(r'^delete/', views.delete_view),
 
 ]

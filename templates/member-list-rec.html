@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>学生档案管理</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi"/>
+    {#    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />#}
+    <link rel="stylesheet" href="/static/css/font.css">
+    <link rel="stylesheet" href="/static/css/xadmin.css">
+    <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/static/js/xadmin.js"></script>
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+      <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body class="layui-anim layui-anim-up">
+<div class="x-nav">
+      <span class="layui-breadcrumb">
+        <a href="">首页</a>
+        <a href="">档案管理</a>
+        <a href="/record/member_list_rec/">
+          <cite>学生信息维护</cite></a>
+      </span>
+    <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"
+       href="javascript:location.replace(location.href);" title="刷新">
+        <i class="layui-icon" style="line-height:30px">ဂ</i></a>
+</div>
+<div class="x-body">
+    <div class="layui-row">
+        <form class="layui-form layui-col-md12 x-so" action="/record/search_rec_stu/" method="post">
+            {% csrf_token %}
+            <input class="layui-input" placeholder="开始日" name="start" id="start">
+            <input class="layui-input" placeholder="截止日" name="end" id="end">
+            <input type="text" name="username" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+            <button class="layui-btn" type="submit"><i class="layui-icon">&#xe615;</i></button>
+        </form>
+    </div>
+    <xblock>
+        <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量恢复</button>
+        <span class="x-right" style="line-height:40px">共有数据：{{ stu_count }} 条</span>
+    </xblock>
+    <table class="layui-table">
+        <thead>
+        <tr>
+            <th>
+                <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i
+                        class="layui-icon">&#xe605;</i></div>
+            </th>
+            <th>学生编号</th>
+            <th>学生姓名</th>
+            <th>性别</th>
+            <th>专业班级</th>
+            <th>出生日期</th>
+            <th>地址</th>
+            <th>入学时间</th>
+            <th>状态</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        {% for stu in stu_all %}
+            <tbody>
+            <tr>
+                <td>
+                    <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id={{ stu.stu_id }}><i
+                            class="layui-icon">&#xe605;</i></div>
+                </td>
+                <td id="stu_id">{{ stu.stu_id }}</td>
+                <td>{{ stu.name }}</td>
+                {% if stu.gender  %}
+                    <td>男</td>
+                {% else %}
+                    <td>女</td>
+                {% endif %}
+
+                <td>{{ stu.major }}{{ stu.clazz }}班</td>
+                <td>{{ stu.birth }}</td>
+                <td>{{ stu.address }}</td>
+                <td>{{ stu.create_date }}</td>
+                <td class="td-status">
+                    <span class="layui-btn layui-btn-normal layui-btn-mini">{{ stu.status }}</span></td>
+                <td class="td-manage">
+                    <!--更改学生状态-->
+                    {#                    <a onclick="member_stop(this,'10001')" href="javascript:;" title="在校">#}
+                    {#                        <i class="layui-icon">&#xe601;</i>#}
+                    {#                    </a>#}
+                    <a title="编辑" onclick="x_admin_show('编辑','/record/member_edit/?id_stu={{ stu.id }}',600,400)"
+                       href="javascript:;">
+                        <i class="layui-icon">&#xe642;</i>
+                    </a>
+
+                    <a title="恢复" onclick="member_del(this,'要恢复的id')" href="javascript:;">
+                        <i class="layui-icon">&#xe62f;</i>
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        {% endfor %}
+
+    </table>
+    <div class="page">
+        <div>
+            {% if page.has_previous %}
+                <a class="prev" href="/record/member_list_rec/?num={{ page.previous_page_number }}">&lt;&lt;</a>
+            {% endif %}
+
+            {% for i in page_range %}
+                {% if page.number == i %}
+                    <span class="current">{{ i }}</span>
+
+                {% else %}
+                    <a class="num" href="/record/member_list_rec/?num={{ i }}">{{ i }}</a></a>
+
+                {% endif %}
+            {% endfor %}
+
+            {% if page.has_next %}
+                <a class="next" href="/record/member_list_rec/?num={{ page.next_page_number }}">&gt;&gt;</a>
+            {% endif %}
+
+        </div>
+    </div>
+
+</div>
+<script>
+    layui.use('laydate', function () {
+        var laydate = layui.laydate;
+
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#start' //指定元素
+        });
+
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#end' //指定元素
+        });
+    });
+
+
+    /*用户-恢复*/
+    function member_del(obj, id) {
+        layer.confirm('确认要恢复吗？', function (index) {
+            $.ajax({
+                url: '/record/ajax_rec/',
+                type: 'POST',
+                data: {
+                    csrfmiddlewaretoken: '{{ csrf_token }}',
+                    'stu_id': $("#stu_id").html(),
+                },
+                dataType: 'json',
+                success: function (date) {
+                    //发异步删除数据
+                    $(obj).parents("tr").remove();
+                    layer.msg('已恢复!', {icon: 1, time: 1000});
+                }
+            })
+
+        });
+    }
+
+
+    function delAll(argument) {
+
+        layer.confirm('确认要恢复吗？', function (index) {
+            var data = tableCheck.getData();
+            data = JSON.stringify(data);
+            $.ajax({
+                url: '/record/ajax_rec_all/',
+                type: 'POST',
+                data: {
+                    csrfmiddlewaretoken: '{{ csrf_token }}',
+                    'data': data,
+                },
+                dataType: 'json',
+                success: function (data) {
+                    //捉到所有被选中的，发异步进行删除
+                    layer.msg('恢复成功', {icon: 1});
+                    $(".layui-form-checked").not('.header').parents('tr').remove();
+                }
+            })
+
+        });
+    }
+</script>
+<script>var _hmt = _hmt || [];
+(function () {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();</script>
+</body>
+
+</html>

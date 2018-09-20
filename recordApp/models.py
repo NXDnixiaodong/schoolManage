@@ -4,6 +4,20 @@ from __future__ import unicode_literals
 from django.db import models
 
 
+class StuManage(models.Manager):
+    """学生的模型管理类"""
+
+    def get_in_stu(self):
+        """查询所有的活跃学生"""
+        in_stu = StuInfo.objects.filter(is_delete=False)
+        return in_stu
+
+    def get_on_stu(self):
+        """查询所有的非活跃学生"""
+        in_stu = StuInfo.objects.filter(is_delete=True)
+        return in_stu
+
+
 class Grade(models.Model):
     """年级类"""
     name = models.CharField(max_length=20)
@@ -56,20 +70,23 @@ class Subject(models.Model):
 
 class StuInfo(models.Model):
     """学生管理类"""
-    stu_id = models.CharField(max_length=10)
+    stu_id = models.CharField(verbose_name='学号', max_length=10)
     name = models.CharField(max_length=20)
     gender = models.BooleanField(default=True)
     create_date = models.DateTimeField(auto_now_add=True)
-    clazz = models.ForeignKey(Clazz)
+    clazz = models.ForeignKey(Clazz)  # 班级
     birth = models.DateField()
     address = models.CharField(max_length=100)
     age = models.PositiveIntegerField()
     id_num = models.CharField(max_length=20, null=True, blank=True)
     tel_num = models.CharField(max_length=20, null=True, blank=True)
-    major = models.ForeignKey(Major,default='')
+    major = models.ForeignKey(Major, default='')  # 专业
     subject = models.ManyToManyField(Subject)
-    status = models.CharField(max_length=10, default='在校生')
+    status = models.CharField(max_length=10, default='在校')
     is_delete = models.BooleanField(default=False)
+
+    # 模型管理类对象
+    objects = StuManage()
 
     class Meta:
         verbose_name = "学生信息"
@@ -94,7 +111,7 @@ class Teacher(models.Model):
     id_num = models.CharField(verbose_name='身份证号', max_length=20, null=True, blank=True)
     ms = models.BooleanField(verbose_name='婚姻状态', default=False)
     create_date = models.DateField(auto_now_add=True)
-    leave_date = models.DateField(null=True,blank=True)
+    leave_date = models.DateField(null=True, blank=True)
     is_delete = models.BooleanField(default=False)
     clazz = models.ManyToManyField(Clazz)  # 关联班级
     subject = models.ManyToManyField(Subject)  # 关联课程
